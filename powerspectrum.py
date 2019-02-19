@@ -1,6 +1,8 @@
 def powerspec(data, divisor, N):
         """
         Take the power spectrum of a signal array
+	IMPUT: data array, divisor, N samples
+	OUTPUT: power spectrum array, frequency
         """
         import numpy as np
         import ugradio
