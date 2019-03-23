@@ -1,0 +1,26 @@
+import ugradio
+
+jd = ugradio.timing.julian_date(moon_17_time[0][220])
+ra, dec = ugradio.coord.moonpos(jd)
+
+lst = 180*ugradio.timing.lst(jd)/np.pi
+
+lam = 2.8
+bx = 1500 #this is the baseline #vary this #50ft in cm
+
+f = bx/lam * np.cos(np.deg2rad(dec)) * np.sin(np.deg2rad(ra-lst)) * 2*np.pi/ 86164
+print(1/f , 'seconds')
+
+
+plt.plot(moon_17_time[0][200:240], moon_17_volts[0][200:240], 'k.')
+plt.title('Moon March 17 -  30 mins - dt = 5.117')
+plt.xlabel('Time [Unix Time]')
+plt.grid()
+#plt.xlim(200,240)
+plt.show()
+
+dt = moon_17_time[0][1:] - moon_17_time[0][0:-1]
+#print(dt)
+
+plt.plot(dt)
+plt.show()
